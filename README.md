@@ -5,8 +5,6 @@
  - Varga *David* Imre
  - **Smuk Ferenc**
 
-  
-
 This is a sample application for the verification laboratory.
 
 ## Getting started
