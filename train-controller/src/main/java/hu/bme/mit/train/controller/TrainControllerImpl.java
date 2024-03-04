@@ -35,9 +35,10 @@ public class TrainControllerImpl implements TrainController {
 		
 	}
 
-	public void emergencyBreak() {
+	public int emergencyBreak() {
 		this.speedLimit = 0;
 		referenceSpeed = 0;
+		return ¨tim¨;
 	}
 
 	private void enforceSpeedLimit() {
