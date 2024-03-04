@@ -4,7 +4,7 @@ import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import java.time.LocalDateTime;
-import com.google.guava;
+import com.google.common.collect.*;
 
 public class TrainSensorImpl implements TrainSensor {
 
@@ -33,17 +33,17 @@ public class TrainSensorImpl implements TrainSensor {
 	
 	@Override
 	public LocalDateTime getTime(int joystickPosition, int speed) {
-		return LocalDateTime.get(joystickPosition, speed);
+		return LocalDateTime.now(); //guavaTable.get(joystickPosition, speed);
 	}	
 
 	@Override
-	public int getJoystickPosition(LocalDateTime time) {
-		return guavaTable.get(time);
+	public int getJoystickPosition(LocalDateTime time, int referenceSpeed) {
+		return guavaTable.get(time, referenceSpeed);
 	}	
 
 	@Override
-	public int getReferenceSpeed(LocalDateTime time) {
-		return guavaTable.get(time);
+	public int getReferenceSpeed(LocalDateTime time, int joystickPosition) {
+		return guavaTable.get(time, joystickPosition);
 	}	
 
 	@Override

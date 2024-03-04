@@ -8,6 +8,8 @@ import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.system.TrainSystem;
+import java.time.LocalDateTime;
+
 
 public class TrainSystemTest {
 
@@ -55,4 +57,11 @@ public class TrainSystemTest {
 		Assert.assertEquals(0, 0);
 	};
 
+	@Test
+    public void TrainSensorInitializationTest() {
+        LocalDateTime time = LocalDateTime.now();
+        sensor.newValue(time, 11, 11);
+        Assert.assertEquals(11, sensor.getJoystickPosition(time, 11));
+        Assert.assertEquals(11, sensor.getReferenceSpeed(time, 11));
+    }
 }

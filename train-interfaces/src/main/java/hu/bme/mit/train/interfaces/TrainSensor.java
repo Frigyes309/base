@@ -10,9 +10,9 @@ public interface TrainSensor {
 
 	LocalDateTime getTime(int joystickPosition, int speed);
 
-	int getJoystickPosition(LocalDateTime time);
+	int getJoystickPosition(LocalDateTime time, int referenceSpeed);
 
-	int getReferenceSpeed(LocalDateTime time);
+	int getReferenceSpeed(LocalDateTime time, int joystickPosition);
 
 	void newValue(LocalDateTime time, int joystickPosition, int referenceSpeed);
 }
