@@ -49,6 +49,11 @@ public class TrainSystemTest {
 		controller.followSpeed();
 		Assert.assertEquals(0, controller.getReferenceSpeed());
 	}
-
 	
+	@Test
+	public void emergencyBreakPositionNegative() {
+		user.emergencyBreak();
+		Assert.assertEquals(0, controller.getReferenceSpeed());
+		Assert.assertEquals(0, controller.speedLimit());
+	}
 }

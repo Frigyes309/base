@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Train Speed Controller123
-=======
 # Train Speed Controller4556
->>>>>>> branch-B
 
 ## A dolgozok
 
