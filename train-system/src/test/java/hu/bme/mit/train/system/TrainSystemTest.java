@@ -8,14 +8,12 @@ import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.system.TrainSystem;
-import com.google.guava.Table;
 
 public class TrainSystemTest {
 
 	TrainController controller;
 	TrainSensor sensor;
 	TrainUser user;
-	Table guavaTable;
 	
 	@Before
 	public void before() {
@@ -54,7 +52,7 @@ public class TrainSystemTest {
 	
 	@Test
 	public void Notest() {
-		guavaTable = new Table();
+		Table<String, String, Integer> test = HashBasedTable.create();
 		Assert.assertEquals(0, 0);
 	};
 
