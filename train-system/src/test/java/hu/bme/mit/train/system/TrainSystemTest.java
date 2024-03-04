@@ -52,7 +52,6 @@ public class TrainSystemTest {
 	
 	@Test
 	public void Notest() {
-		Table<String, String, Integer> test = HashBasedTable.create();
 		Assert.assertEquals(0, 0);
 	};
 

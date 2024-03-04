@@ -9,10 +9,13 @@ public class TrainSensorImpl implements TrainSensor {
 	private TrainController controller;
 	private TrainUser user;
 	private int speedLimit = 5;
+	private Table<LocalDateTime, Integer, Integer> guavaTable;
 
 	public TrainSensorImpl(TrainController controller, TrainUser user) {
 		this.controller = controller;
 		this.user = user;
+
+		guavaTable = HashBasedTable.create();
 	}
 
 	@Override
@@ -25,5 +28,24 @@ public class TrainSensorImpl implements TrainSensor {
 		this.speedLimit = speedLimit;
 		controller.setSpeedLimit(speedLimit);
 	}
+	
+	@Override
+	public LocalDateTime getTime(int joystickPosition, int speed) {
+		return LocalDateTime.get(joystickPosition, speed);
+	}	
 
+	@Override
+	public int getJoystickPosition(LocalDateTime time) {
+		return guavaTable.get(time);
+	}	
+
+	@Override
+	public int getReferenceSpeed(LocalDateTime time) {
+		return guavaTable.get(time);
+	}	
+
+	@Override
+	public void newValue(LocalDateTime time, int joystickPosition, int referenceSpeed) {
+		guavaTable.put(time, joystickPosition, referenceSpeed);
+	}
 }
