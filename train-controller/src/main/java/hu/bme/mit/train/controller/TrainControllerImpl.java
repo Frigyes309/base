@@ -31,6 +31,9 @@ public class TrainControllerImpl implements TrainController {
 	@Override
 	public void setSpeedLimit(int speedLimit) {
 		this.speedLimit = speedLimit;
+		if (speedLimit < 0 || speedLimit > 500 || speedLimit * 2 < referenceSpeed ) {
+			setAlarmState(true);
+		}
 		enforceSpeedLimit();
 		
 	}
@@ -56,6 +59,16 @@ public class TrainControllerImpl implements TrainController {
 
 		if(joystickPosition < 0 && referenceSpeed + step >= 0)
 			referenceSpeed += step;*/
+	}
+
+	@Override
+	public void getAlarmState() {
+
+	}
+
+	@Override
+	public void setAlarmState(boolean alarmState) {
+		
 	}
 
 }
