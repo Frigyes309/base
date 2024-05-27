@@ -28,4 +28,14 @@ public class TrainUserImpl implements TrainUser {
 		controller.setJoystickPosition(joystickPosition);
 	}
 
+	@Override
+	public void getAlarmState() {
+
+	}
+
+	@Override
+	public void setAlarmState(boolean alarmState) {
+		
+	}
+
 }

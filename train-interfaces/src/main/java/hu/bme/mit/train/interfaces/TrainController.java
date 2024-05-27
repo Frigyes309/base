@@ -10,10 +10,4 @@ public interface TrainController {
 
 	void setJoystickPosition(int joystickPosition);
 
-	
-	public void getAlarmState();
-
-	
-	public void setAlarmState(boolean alarmState);
-
 }

@@ -8,4 +8,10 @@ public interface TrainUser {
 
 	void overrideJoystickPosition(int joystickPosition);
 
+	
+	public void getAlarmState();
+
+	
+	public void setAlarmState(boolean alarmState);
+
 }

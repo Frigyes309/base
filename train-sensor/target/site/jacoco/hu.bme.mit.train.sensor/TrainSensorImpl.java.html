@@ -10,15 +10,15 @@ public class TrainSensorImpl implements TrainSensor {
 
 	private TrainController controller;
 	private TrainUser user;
-<span class="nc" id="L13">	private int speedLimit = 5;</span>
+<span class="fc" id="L13">	private int speedLimit = 5;</span>
 	private Table&lt;LocalDateTime, Integer, Integer&gt; guavaTable;
 
-<span class="nc" id="L16">	public TrainSensorImpl(TrainController controller, TrainUser user) {</span>
-<span class="nc" id="L17">		this.controller = controller;</span>
-<span class="nc" id="L18">		this.user = user;</span>
+<span class="fc" id="L16">	public TrainSensorImpl(TrainController controller, TrainUser user) {</span>
+<span class="fc" id="L17">		this.controller = controller;</span>
+<span class="fc" id="L18">		this.user = user;</span>
 
-<span class="nc" id="L20">		guavaTable = HashBasedTable.create();</span>
-<span class="nc" id="L21">	}</span>
+<span class="fc" id="L20">		guavaTable = HashBasedTable.create();</span>
+<span class="fc" id="L21">	}</span>
 
 	@Override
 	public int getSpeedLimit() {
@@ -27,28 +27,35 @@ public class TrainSensorImpl implements TrainSensor {
 
 	@Override
 	public void overrideSpeedLimit(int speedLimit) {
-<span class="nc" id="L30">		this.speedLimit = speedLimit;</span>
-<span class="nc" id="L31">		controller.setSpeedLimit(speedLimit);</span>
-<span class="nc" id="L32">	}</span>
+<span class="fc bfc" id="L30" title="All 4 branches covered.">		if (speedLimit &lt; 0 || speedLimit &gt; 500 ||</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">		 speedLimit * 2 &lt; controller.getReferenceSpeed()) {</span>
+<span class="fc" id="L32">				user.setAlarmState(true);</span>
+		}
+		else {
+<span class="fc" id="L35">			user.setAlarmState(false);</span>
+		}
+<span class="fc" id="L37">		this.speedLimit = speedLimit;</span>
+<span class="fc" id="L38">		controller.setSpeedLimit(speedLimit);</span>
+<span class="fc" id="L39">	}</span>
 	
 	@Override
 	public LocalDateTime getTime(int joystickPosition, int speed) {
-<span class="nc" id="L36">		return LocalDateTime.now(); //guavaTable.get(joystickPosition, speed);</span>
+<span class="nc" id="L43">		return LocalDateTime.now(); //guavaTable.get(joystickPosition, speed);</span>
 	}	
 
 	@Override
 	public int getJoystickPosition(LocalDateTime time, int referenceSpeed) {
-<span class="nc" id="L41">		return guavaTable.get(time, referenceSpeed);</span>
+<span class="nc" id="L48">		return guavaTable.get(time, referenceSpeed);</span>
 	}	 
 
 	@Override
 	public int getReferenceSpeed(LocalDateTime time, int joystickPosition) {
-<span class="nc" id="L46">		return guavaTable.get(time, joystickPosition);</span>
+<span class="nc" id="L53">		return guavaTable.get(time, joystickPosition);</span>
 	}	
 
 	@Override
 	public void newValue(LocalDateTime time, int joystickPosition, int referenceSpeed) {
-<span class="nc" id="L51">		guavaTable.put(time, joystickPosition, referenceSpeed);</span>
-<span class="nc" id="L52">	}</span>
+<span class="nc" id="L58">		guavaTable.put(time, joystickPosition, referenceSpeed);</span>
+<span class="nc" id="L59">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
