@@ -51,11 +51,11 @@ public class TrainControllerImpl implements TrainController {
 		this.step = joystickPosition;		
 
 		// speed of the train is influenced by the position of the joystick
-		if(joystickPosition > 0 && referenceSpeed + step <= speedLimit)
+		/*if(joystickPosition > 0 && referenceSpeed + step <= speedLimit)
 			referenceSpeed += step;
 
 		if(joystickPosition < 0 && referenceSpeed + step >= 0)
-			referenceSpeed += step;
+			referenceSpeed += step;*/
 	}
 
 }
