@@ -39,7 +39,7 @@ public class TrainSensorImpl implements TrainSensor {
 	@Override
 	public int getJoystickPosition(LocalDateTime time, int referenceSpeed) {
 		return guavaTable.get(time, referenceSpeed);
-	}	
+	}	 
 
 	@Override
 	public int getReferenceSpeed(LocalDateTime time, int joystickPosition) {
