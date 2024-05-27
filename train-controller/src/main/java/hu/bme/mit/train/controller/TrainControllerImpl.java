@@ -48,7 +48,8 @@ public class TrainControllerImpl implements TrainController {
 
 	@Override
 	public void setJoystickPosition(int joystickPosition) {
-		this.step = joystickPosition * 2;
+		//It is 2 beacuse of the sensitivity of the joystick
+		this.step = joystickPosition * (1 + 1);
 		followSpeed();
 	}
 
